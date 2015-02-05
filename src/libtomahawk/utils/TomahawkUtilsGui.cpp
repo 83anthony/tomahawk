@@ -365,9 +365,11 @@ bringToFront()
         // "Unminimize" first, otherwise the entry in the taskbar will only flash but the window won't come to front
         widget->windowHandle()->showNormal();
 
+        #ifdef HAVE_X11
         if ( QX11Info::isPlatformX11() ) {
             QX11Info::setAppTime( QX11Info::getTimestamp() );
         }
+        #endif
     }
 #endif
 }
